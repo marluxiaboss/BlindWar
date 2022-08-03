@@ -92,7 +92,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_margin="10dp"
-                    android:text="@string/play_with_random"
+                    android:text="@string/party_mode"
                     android:textColor="#3F88C5"
                     android:textSize="20sp" />
             </FrameLayout>
