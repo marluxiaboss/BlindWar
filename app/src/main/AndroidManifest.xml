@@ -5,7 +5,7 @@
 
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
 
     <queries>
@@ -24,36 +24,41 @@
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup">
         <activity
+            android:name=".game.multi.partyMode.PartyActivity"
+            android:exported="false" />
+        <activity
             android:name=".login.SplashScreenActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
             <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
                 <data
                     android:host="blindwar.page.link"
                     android:pathPrefix="/game"
-                    android:scheme="https"/>
+                    android:scheme="https" />
             </intent-filter>
         </activity>
         <activity
             android:name=".game.util.GameActivity"
             android:exported="false"
-            android:windowSoftInputMode="adjustPan"
             android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan"
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".game.solo.TutorialActivity"
             android:exported="false"
-            android:windowSoftInputMode="adjustPan"
             android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan"
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".game.multi.MultiPlayerMenuActivity"
@@ -67,23 +72,22 @@
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".profile.HistoryActivity"
-            android:parentActivityName=".profile.fragments.ProfileFragment"
             android:exported="false"
+            android:parentActivityName=".profile.fragments.ProfileFragment"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".profile.fragments.StatisticsActivity"
-            android:parentActivityName=".profile.fragments.ProfileFragment"
             android:exported="false"
+            android:parentActivityName=".profile.fragments.ProfileFragment"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".menu.MainMenuActivity"
             android:exported="true"
-            android:windowSoftInputMode="adjustPan"
             android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity">
-        </activity>
+            android:windowSoftInputMode="adjustPan"
+            tools:ignore="LockedOrientationActivity"></activity>
 
         <meta-data
             android:name="preloaded_fonts"

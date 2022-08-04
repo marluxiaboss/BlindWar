@@ -76,7 +76,7 @@
                     android:layout_width="200dp"
                     android:layout_height="200dp"
                     android:contentDescription="@string/oval_description"
-                    android:onClick="randomButton"
+                    android:onClick="partyButton"
                     android:src="@drawable/transparent_rectangle_green" />
 
                 <ImageView

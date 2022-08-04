@@ -16,6 +16,7 @@ import ch.epfl.sdp.blindwar.R
 import ch.epfl.sdp.blindwar.database.MatchDatabase
 import ch.epfl.sdp.blindwar.database.UserDatabase
 import ch.epfl.sdp.blindwar.game.multi.model.Match
+import ch.epfl.sdp.blindwar.game.multi.partyMode.PartyActivity
 import ch.epfl.sdp.blindwar.game.solo.fragments.DemoFragment
 import ch.epfl.sdp.blindwar.game.util.DynamicLinkHelper
 import ch.epfl.sdp.blindwar.game.util.MainMusic
@@ -193,6 +194,14 @@ class MultiPlayerMenuActivity : AppCompatActivity() {
         }*/
     }
 
+    /**
+     * Launch the Party activity
+     * @param view
+     */
+    fun partyButton(view: View) {
+        assert(view.isEnabled)
+        startActivity(Intent(this, PartyActivity::class.java))
+    }
     /**
      * display progressDialog cancelable for any messages
      *

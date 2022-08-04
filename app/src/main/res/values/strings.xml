@@ -127,7 +127,7 @@
     <string name="alert_dialogue_cancel_text">Are you sure to keep old info</string>
     <string name="newUser_ExtraName">newUser</string>
     <string name="reset">reset</string>
-    <string name="no_birthdate_selected"/>
+    <string name="no_birthdate_selected" />
 
     <!-- PROFILE -->
     <string name="userRank">Rank</string>
