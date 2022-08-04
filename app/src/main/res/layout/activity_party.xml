@@ -47,7 +47,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView8"
-        app:onclick="playButton"
         app:srcCompat="@drawable/play_arrow"
         app:tint="@color/ivory" />
 
@@ -97,9 +96,9 @@
         android:textColor="@color/ivory"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline12"
-        app:layout_constraintEnd_toEndOf="@+id/soloBtn"
+        app:layout_constraintEnd_toEndOf="@+id/playButton"
         app:layout_constraintHorizontal_bias="0.416"
-        app:layout_constraintStart_toStartOf="@+id/soloBtn"
+        app:layout_constraintStart_toStartOf="@+id/playButton"
         app:layout_constraintTop_toTopOf="@+id/guideline7"
         app:layout_constraintVertical_bias="0.838" />
 
