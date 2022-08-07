@@ -25,6 +25,7 @@ import ch.epfl.sdp.blindwar.database.MatchDatabase
 import ch.epfl.sdp.blindwar.game.model.config.GameFormat
 import ch.epfl.sdp.blindwar.game.model.config.GameMode
 import ch.epfl.sdp.blindwar.game.multi.model.Match
+import ch.epfl.sdp.blindwar.game.multi.partyMode.PartyScoreFragment
 import ch.epfl.sdp.blindwar.game.solo.fragments.SongSummaryFragment.Companion.ARTIST_KEY
 import ch.epfl.sdp.blindwar.game.solo.fragments.SongSummaryFragment.Companion.COVER_KEY
 import ch.epfl.sdp.blindwar.game.solo.fragments.SongSummaryFragment.Companion.IS_MULTI
@@ -63,6 +64,7 @@ class DemoFragment : Fragment() {
 
     // INTERFACE
     private lateinit var gameSummary: GameSummaryFragment
+    private lateinit var partyScore: PartyScoreFragment
     private lateinit var scoreTextView: TextView
     private lateinit var guessButton: ImageButton
     private lateinit var countDown: TextView
@@ -468,9 +470,24 @@ class DemoFragment : Fragment() {
         if (gameInstanceViewModel.gameInstance.value?.gameFormat == GameFormat.MULTI) {
             MatchDatabase.playerFinish(matchId!!, playerIndex, Firebase.firestore)
         }
+
+        // If party mode, show the score of each player before the song summary
+        if (gameInstanceViewModel.gameInstance.value?.gameFormat == GameFormat.MULTI) {
+            launchPartyScore()
+        }
         launchGameSummary()
     }
 
+    private fun launchPartyScore() {
+        val transaction = activity?.supportFragmentManager?.beginTransaction()
+        transaction?.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+        // Pass the match id
+        //val bundle = Bundle()
+        //bundle.putString("matchId", matchId)
+        //gameSummary.arguments = bundle
+        transaction?.replace((view?.parent as ViewGroup).id, partyScore, "Party Score")
+        transaction?.commit()
+    }
     /**
      * Lauch the game over summary
      *
