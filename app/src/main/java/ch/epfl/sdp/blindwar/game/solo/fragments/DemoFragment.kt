@@ -238,6 +238,7 @@ class DemoFragment : Fragment() {
         microphoneButton = view.findViewById(R.id.microphone)
         context?.let { voiceRecognizer.init(it, Locale.ENGLISH.toLanguageTag()) }
         gameSummary = GameSummaryFragment()
+        partyScore = PartyScoreFragment()
 
         return view
     }
@@ -472,21 +473,28 @@ class DemoFragment : Fragment() {
         }
 
         // If party mode, show the score of each player before the song summary
-        if (gameInstanceViewModel.gameInstance.value?.gameFormat == GameFormat.MULTI) {
-            launchPartyScore()
+        if (gameInstanceViewModel.gameInstance.value?.gameFormat == GameFormat.PARTY) {
+            //launchPartyScore()
         }
-        launchGameSummary()
+        launchPartyScore()
+        //launchGameSummary()
     }
 
     private fun launchPartyScore() {
+        /*
         val transaction = activity?.supportFragmentManager?.beginTransaction()
-        transaction?.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+        //transaction?.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
         // Pass the match id
         //val bundle = Bundle()
         //bundle.putString("matchId", matchId)
         //gameSummary.arguments = bundle
         transaction?.replace((view?.parent as ViewGroup).id, partyScore, "Party Score")
         transaction?.commit()
+        */
+        activity?.supportFragmentManager?.beginTransaction()?.apply {
+            replace((view?.parent as ViewGroup).id, partyScore)
+            commit()
+        }
     }
     /**
      * Lauch the game over summary
