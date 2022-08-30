@@ -11,6 +11,7 @@ import ch.epfl.sdp.blindwar.R
 import ch.epfl.sdp.blindwar.data.music.metadata.MusicMetadata
 import ch.epfl.sdp.blindwar.database.UserDatabase
 import ch.epfl.sdp.blindwar.game.model.GameResult
+import ch.epfl.sdp.blindwar.game.multi.partyMode.model.PartyPlayer
 import ch.epfl.sdp.blindwar.profile.model.Result
 import ch.epfl.sdp.blindwar.profile.model.User
 import ch.epfl.sdp.blindwar.profile.util.LeaderboardRecyclerAdapter
@@ -74,6 +75,9 @@ class DisplayHistoryFragment : Fragment() {
                 }
                 LEADERBOARD_TYPE -> {
                     setLeaderboard(it.uid)
+                }
+                PARTY_GAME_TYPE -> {
+                    setPartyGame(it.uid)
                 }
             }
         }
@@ -162,11 +166,29 @@ class DisplayHistoryFragment : Fragment() {
         )
     }
 
+    private fun setPartyGame(uid: String) {
+        // use view model to find the PartyPlayers
+        var partyPlayers = mutableListOf<PartyPlayer>()
+        /*
+        val viewModel = ViewModelProvider(this).get(PartyGameViewModel::class.java)
+        viewModel.getPartyPlayers().observe(viewLifecycleOwner, Observer {
+            partyPlayers = it
+        })
+        */
+        val examplePlayer1 = PartyPlayer("player1", 0)
+        val examplePlayer2 = PartyPlayer("player2", 0)
+        partyPlayers.add()
+
+
+
+    }
+
     companion object {
         const val HISTORY_TYPE = "type"
         const val LIKED_MUSIC_TYPE = "liked musics"
         const val MATCH_HISTORY_TYPE = "match history"
         const val LEADERBOARD_TYPE = "leaderboard"
+        const val PARTY_GAME_TYPE = "party game"
 
         fun newInstance(name: String): DisplayHistoryFragment {
             val fragment = DisplayHistoryFragment()
