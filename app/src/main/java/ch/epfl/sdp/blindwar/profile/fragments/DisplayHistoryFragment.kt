@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ch.epfl.sdp.blindwar.R
@@ -12,6 +13,9 @@ import ch.epfl.sdp.blindwar.data.music.metadata.MusicMetadata
 import ch.epfl.sdp.blindwar.database.UserDatabase
 import ch.epfl.sdp.blindwar.game.model.GameResult
 import ch.epfl.sdp.blindwar.game.multi.partyMode.model.PartyPlayer
+import ch.epfl.sdp.blindwar.game.multi.partyMode.util.PartyRankingRecyclerAdapter
+import ch.epfl.sdp.blindwar.game.multi.partyMode.viewmodels.PartyInstanceViewModel
+import ch.epfl.sdp.blindwar.game.viewmodels.GameInstanceViewModel
 import ch.epfl.sdp.blindwar.profile.model.Result
 import ch.epfl.sdp.blindwar.profile.model.User
 import ch.epfl.sdp.blindwar.profile.util.LeaderboardRecyclerAdapter
@@ -29,6 +33,8 @@ class DisplayHistoryFragment : Fragment() {
     private var lossesList = mutableListOf<String>()
     private var victoriesList = mutableListOf<String>()
     private var gameTimesList = mutableListOf<String>()
+
+    private val partyInstanceViewModel: PartyInstanceViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -167,19 +173,19 @@ class DisplayHistoryFragment : Fragment() {
     }
 
     private fun setPartyGame(uid: String) {
+
         // use view model to find the PartyPlayers
-        var partyPlayers = mutableListOf<PartyPlayer>()
-        /*
-        val viewModel = ViewModelProvider(this).get(PartyGameViewModel::class.java)
-        viewModel.getPartyPlayers().observe(viewLifecycleOwner, Observer {
-            partyPlayers = it
-        })
-        */
-        val examplePlayer1 = PartyPlayer("player1", 0)
-        val examplePlayer2 = PartyPlayer("player2", 0)
-        partyPlayers.add()
+        val partyPlayers = partyInstanceViewModel.partGameInstance.value?.players
+        for (i in (0 until artists.size)) {
+            artists[i] = partyPlayers!![i].name
+            //images[i] = sortedPseudoUsers[i].second.elo
+            winsList[i] = partyPlayers[i].score.toString()
+            //lossesList[i] = sortedPseudoUsers[i].second.losses
+        }
 
-
+        musicRecyclerView.adapter = PartyRankingRecyclerAdapter(
+            
+        )
 
     }
 
