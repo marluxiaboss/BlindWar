@@ -254,7 +254,7 @@ class DemoFragment : Fragment() {
         microphoneButton = view.findViewById(R.id.microphone)
         context?.let { voiceRecognizer.init(it, Locale.ENGLISH.toLanguageTag()) }
         gameSummary = GameSummaryFragment()
-        partyScore = DisplayHistoryFragment.newInstance("leaderboard")
+        partyScore = DisplayHistoryFragment.newInstance("party game")
 
         return view
     }

@@ -50,6 +50,6 @@ class PartyRankingRecyclerAdapter(
     }
 
     override fun getItemCount(): Int {
-        return ranks.size
+        return pseudos.size
     }
 }

@@ -43,9 +43,9 @@ class DisplayHistoryFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.activity_display_music, container, false)
 
-        postToList()
         musicRecyclerView = view.findViewById(R.id.musicRecyclerView)
         musicRecyclerView.layoutManager = LinearLayoutManager(activity?.applicationContext)
+        postToList()
 
         return view
     }
@@ -176,11 +176,13 @@ class DisplayHistoryFragment : Fragment() {
 
         // use view model to find the PartyPlayers
         val partyPlayers = partyInstanceViewModel.partGameInstance.value?.players
-        for (i in (0 until artists.size)) {
-            artists[i] = partyPlayers!![i].name
-            //images[i] = sortedPseudoUsers[i].second.elo
-            winsList[i] = partyPlayers[i].score.toString()
-            //lossesList[i] = sortedPseudoUsers[i].second.losses
+        if (partyPlayers != null) {
+            for (i in (partyPlayers.indices)) {
+                artists.add(partyPlayers!![i].name)
+                //images[i] = sortedPseudoUsers[i].second.elo
+                winsList.add(partyPlayers[i].score.toString())
+                //lossesList[i] = sortedPseudoUsers[i].second.losses
+            }
         }
 
         musicRecyclerView.adapter = PartyRankingRecyclerAdapter(
