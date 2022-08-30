@@ -38,6 +38,7 @@ import ch.epfl.sdp.blindwar.game.util.ScoreboardAdapter
 import ch.epfl.sdp.blindwar.game.util.VoiceRecognizer
 import ch.epfl.sdp.blindwar.game.viewmodels.GameInstanceViewModel
 import ch.epfl.sdp.blindwar.game.viewmodels.GameViewModel
+import ch.epfl.sdp.blindwar.profile.fragments.DisplayHistoryFragment
 import com.airbnb.lottie.LottieAnimationView
 import com.airbnb.lottie.LottieDrawable
 import com.google.firebase.auth.ktx.auth
@@ -68,7 +69,7 @@ class DemoFragment : Fragment() {
 
     // INTERFACE
     private lateinit var gameSummary: GameSummaryFragment
-    private lateinit var partyScore: PartyScoreFragment
+    private lateinit var partyScore: DisplayHistoryFragment
     private lateinit var scoreTextView: TextView
     private lateinit var guessButton: ImageButton
     private lateinit var countDown: TextView
@@ -253,7 +254,7 @@ class DemoFragment : Fragment() {
         microphoneButton = view.findViewById(R.id.microphone)
         context?.let { voiceRecognizer.init(it, Locale.ENGLISH.toLanguageTag()) }
         gameSummary = GameSummaryFragment()
-        partyScore = PartyScoreFragment()
+        partyScore = DisplayHistoryFragment.newInstance("leaderboard")
 
         return view
     }
