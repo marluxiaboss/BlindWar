@@ -184,7 +184,8 @@ class DisplayHistoryFragment : Fragment() {
         }
 
         musicRecyclerView.adapter = PartyRankingRecyclerAdapter(
-            
+            titles, artists, winsList
+
         )
 
     }

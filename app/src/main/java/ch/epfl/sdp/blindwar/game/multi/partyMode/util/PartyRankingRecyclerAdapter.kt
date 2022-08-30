@@ -7,11 +7,17 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import ch.epfl.sdp.blindwar.R
 
+/**
+ * Adapter for the RecyclerView, contains the data to populate views to be used by RecyclerView.
+ * @property ranks
+ * @property pseudos
+ * @property correctAnswers
+ */
 class PartyRankingRecyclerAdapter(
     private var ranks: List<String>,
     private var pseudos: List<String>,
     private var correctAnswers: List<String>,
-    private var wrongAnswers: List<String>
+    //private var wrongAnswers: List<String>
 ) : RecyclerView.Adapter<PartyRankingRecyclerAdapter.ViewHolder>()
     {
 
@@ -34,12 +40,12 @@ class PartyRankingRecyclerAdapter(
         if (position == 0) {
             holder.userRank.text = "Rank"
             holder.userPseudo.text = "Name"
-            holder.userElo.text = "Correct ansower/Wrong answers"
+            holder.userElo.text = "Score"
         } else {
             holder.userRank.text = "#${(position)}"
             holder.userPseudo.text = pseudos[position - 1]
             holder.userElo.text =
-                "${correctAnswers[position - 1]}/${wrongAnswers[position - 1]}"
+                "${correctAnswers[position - 1]}"
         }
     }
 

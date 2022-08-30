@@ -26,6 +26,9 @@ import ch.epfl.sdp.blindwar.game.model.config.GameFormat
 import ch.epfl.sdp.blindwar.game.model.config.GameMode
 import ch.epfl.sdp.blindwar.game.multi.model.Match
 import ch.epfl.sdp.blindwar.game.multi.partyMode.PartyScoreFragment
+import ch.epfl.sdp.blindwar.game.multi.partyMode.model.PartyMatch
+import ch.epfl.sdp.blindwar.game.multi.partyMode.model.PartyPlayer
+import ch.epfl.sdp.blindwar.game.multi.partyMode.viewmodels.PartyInstanceViewModel
 import ch.epfl.sdp.blindwar.game.solo.fragments.SongSummaryFragment.Companion.ARTIST_KEY
 import ch.epfl.sdp.blindwar.game.solo.fragments.SongSummaryFragment.Companion.COVER_KEY
 import ch.epfl.sdp.blindwar.game.solo.fragments.SongSummaryFragment.Companion.IS_MULTI
@@ -54,6 +57,7 @@ class DemoFragment : Fragment() {
     // VIEW MODELS
     lateinit var gameViewModel: GameViewModel
     private val gameInstanceViewModel: GameInstanceViewModel by activityViewModels()
+    private val partyInstanceViewModel: PartyInstanceViewModel by activityViewModels()
 
     // Adapter
     private lateinit var scoreboardAdapter: ScoreboardAdapter
@@ -116,6 +120,17 @@ class DemoFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val view = inflater.inflate(R.layout.activity_animated_demo, container, false)
+
+        // added for test
+        val basePlayer1 = PartyPlayer("Player1", 1)
+        val basePlayer4 = PartyPlayer("Player4", 4)
+        val basePlayer3 = PartyPlayer("Player3", 3)
+        val basePlayer2 = PartyPlayer("Player2", 2)
+        val basePlayer5 = PartyPlayer("Player5", 5)
+        val basePlayers = mutableListOf<PartyPlayer>(basePlayer1, basePlayer2, basePlayer3,
+            basePlayer4, basePlayer5)
+        val basePartyMatch = PartyMatch(basePlayers)
+        partyInstanceViewModel.setPartyGameInstance(basePartyMatch)
 
         // if multi mode, get gameInstance from matchId
         matchId = arguments?.getString("match_id")
