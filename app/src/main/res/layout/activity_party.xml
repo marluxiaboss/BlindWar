@@ -51,6 +51,35 @@
         app:tint="@color/ivory" />
 
 
+    <TextView
+        android:id="@+id/configText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/oxygen"
+        android:text="@string/configuration"
+        android:textColor="@color/ivory"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/configButton"
+        app:layout_constraintEnd_toEndOf="@+id/configButton"
+        app:layout_constraintStart_toStartOf="@+id/configButton"
+        app:layout_constraintTop_toTopOf="@+id/guideline7"
+        app:layout_constraintVertical_bias="0.972" />
+
+    <ImageButton
+        android:id="@+id/configButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:background="@drawable/back_frame_failure"
+        android:contentDescription="@string/content_description_ImageButton"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/playButton"
+        app:layout_constraintVertical_bias="0.038"
+        app:srcCompat="@drawable/play_arrow"
+        app:tint="@color/ivory" />
 
     <TextView
         android:id="@+id/titleText"

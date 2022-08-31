@@ -15,6 +15,7 @@ class PartyActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_party)
         val playButton = findViewById<ImageButton>(R.id.playButton)
+        val configButton = findViewById<ImageButton>(R.id.configButton)
         playButton.setOnClickListener {
             val intent = Intent(this, GameActivity::class.java)
             intent.putExtra(GameActivity.GAME_FORMAT_EXTRA_NAME, GameFormat.SOLO)
