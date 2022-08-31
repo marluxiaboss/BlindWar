@@ -123,6 +123,7 @@ class DemoFragment : Fragment() {
         val view = inflater.inflate(R.layout.activity_animated_demo, container, false)
 
         // added for test
+        /*
         val basePlayer1 = PartyPlayer("Player1", 1)
         val basePlayer4 = PartyPlayer("Player4", 4)
         val basePlayer3 = PartyPlayer("Player3", 3)
@@ -132,6 +133,7 @@ class DemoFragment : Fragment() {
             basePlayer4, basePlayer5)
         val basePartyMatch = PartyMatch(basePlayers)
         partyInstanceViewModel.setPartyGameInstance(basePartyMatch)
+        */
 
         // if multi mode, get gameInstance from matchId
         matchId = arguments?.getString("match_id")
